@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -17,11 +18,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.silentspark.silentspark.R
-import app.silentspark.silentspark.ui.theme.theme.Abuabu
-import app.silentspark.silentspark.ui.theme.theme.Coklat
+import app.silentspark.silentspark.ui.theme.theme.Hitam
 
 @Composable
-fun ButtonKonfirmasi(
+fun ButtonPilihFoto(
     text: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -31,32 +31,30 @@ fun ButtonKonfirmasi(
         onClick = onClick,
         enabled = enabled,
         modifier = modifier
-            .width(270.dp)
-            .height(36.dp),
-        shape = RoundedCornerShape(size = 5.dp),
-        colors = ButtonDefaults.buttonColors(Coklat),
+            .width(110.dp)
+            .height(33.dp),
+        shape = RoundedCornerShape(size = 40.dp),
+        colors = ButtonDefaults.buttonColors(Color.White),
 
         ) {
         Text(
             text = text,
             style = TextStyle(
-                fontSize = 12.sp,
+                fontSize = 13.sp,
                 lineHeight = 28.sp,
-                fontFamily = FontFamily(Font(R.font.poppins_semibold)),
-                color = Abuabu,
+                fontFamily = FontFamily(Font(R.font.poppins_medium)),
+                color = Hitam,
                 textAlign = TextAlign.Right,),
             modifier = Modifier.align(Alignment.CenterVertically)
         )
-
-
     }
 }
 
 @Composable
 @Preview(showBackground = false)
-fun PreviewButtonKonfirmasi() {
-    ButtonKonfirmasi(
-        text = "Konfirmasi Status Pembayaran",
+fun PreviewButtonPilihFoto() {
+    ButtonPilihFoto(
+        text = "Pilih Foto",
         onClick = {}
     )
 }

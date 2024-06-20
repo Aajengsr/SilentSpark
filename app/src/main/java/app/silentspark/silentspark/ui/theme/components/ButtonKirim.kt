@@ -1,6 +1,5 @@
 package app.silentspark.silentspark.ui.theme.components
 
-import App.SilentSpark.silentspark.R
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.silentspark.silentspark.R
 import app.silentspark.silentspark.ui.theme.theme.Abuabu
 import app.silentspark.silentspark.ui.theme.theme.Coklat
 
@@ -32,7 +32,7 @@ fun ButtonKirim(
         enabled = enabled,
         modifier = modifier
             .width(270.dp)
-            .height(36.dp),
+            .height(30.dp),
         shape = RoundedCornerShape(size = 5.dp),
         colors = ButtonDefaults.buttonColors(Coklat),
 
