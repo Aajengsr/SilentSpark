@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "App.SilentSpark.silentspark"
+    namespace = "app.silentspark.silentspark"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "App.SilentSpark.silentspark"
+        applicationId = "app.silentspark.silentspark"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -48,6 +48,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    androidResources {
+        noCompress += "drawable"
+    }
+
 }
 
 dependencies {
@@ -73,9 +77,8 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-
-
-
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation ("androidx.compose.material:material-icons-extended:1.3.1")
 }
 
 

@@ -1,127 +1,121 @@
 package app.silentspark.silentspark.ui.theme.screen
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.silentspark.silentspark.R
+import app.silentspark.silentspark.ui.theme.components.ButtonNext
+import app.silentspark.silentspark.ui.theme.components.DataLengkapiProfilesiswa
+import app.silentspark.silentspark.ui.theme.components.PhotoPicker
+import app.silentspark.silentspark.ui.theme.components.SiswaLengkapiProfileItem
+import app.silentspark.silentspark.ui.theme.theme.ijolumut
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SiswaLengkapiProfileScreen() {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(16.dp), Arrangement.Top, Alignment.CenterHorizontally) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = "Siswa Lengkapi Profil",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold
-            )
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.buttonhijau),
+                            contentDescription = "Icon",
+                            modifier = Modifier
+                                .width(38.dp)
+                                .height(39.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
 
-            IconButton(
-                onClick = {}
+                        Text(
+                            text = "Lengkapi Profile Anda",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = ijolumut,
+                                fontFamily = FontFamily(Font(R.font.poppins_bold))
+                            ),
+                            textAlign = TextAlign.End,
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(end = 20.dp)
+                        )
+                    }
+                }
+            )
+        },
+        content = { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .padding(10.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Icon(imageVector = Icons.Filled.Notifications, contentDescription = "Notifikasi")
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(0.dp)
+                ) {
+                    item {
+                        PhotoPicker()
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
+                    item {
+                        Text(
+                            text = "Informasi Lengkap",
+                            style = TextStyle(
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Black,
+                                fontFamily = FontFamily(Font(R.font.poppins_bold))
+                            ),
+                            modifier = Modifier.padding(start = 8.dp)
+                        )
+                    }
+                    items(DataLengkapiProfilesiswa) { profileItem ->
+                        SiswaLengkapiProfileItem(profileItem)
+                    }
+                    item {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        ) {
+                            ButtonNext(
+                                text = "Selanjutnya",
+                                onClick = {
+                                },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            )
+                        }
+                    }
+                }
             }
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "Informasi Umum",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = "Nama Lengkap",
-            onValueChange = {},
-            label = { Text("Nama Lengkap") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = "Nama Belakang",
-            onValueChange = { /* TODO: Handle last name input change */ },
-            label = { Text("Nama Belakang") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = "Tempat Lahir",
-            onValueChange = { /* TODO: Handle birthplace input change */ },
-            label = { Text("Tempat Lahir") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = "Tanggal Lahir",
-            onValueChange = { /* TODO: Handle date of birth input change */ },
-            label = { Text("Tanggal Lahir") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = "Jenis Kelamin",
-            onValueChange = { /* TODO: Handle gender input change */ },
-            label = { Text("Jenis Kelamin") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = "Alamat Lengkap",
-            onValueChange = { /* TODO: Handle address input change */ },
-            label = { Text("Alamat Lengkap") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        Button(
-            onClick = { /* TODO: Handle complete profile button click */ },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Lengkapi Profile Anda")
-        }
-    }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-private fun PreviewSiswaLengkapiProfile() {
+fun SiswaLengkapiProfileScreenPreview() {
     SiswaLengkapiProfileScreen()
 }
