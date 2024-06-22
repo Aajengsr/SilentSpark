@@ -25,6 +25,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import app.silentspark.silentspark.ui.theme.theme.Green
 import app.silentspark.silentspark.ui.theme.theme.putih
 import app.silentspark.silentspark.ui.theme.components.BoxSingUp
@@ -112,5 +116,9 @@ fun SignUpScreen (
     }
 }
 
-
+@Preview(showBackground = true)
+@Composable
+private fun PreviewSignInScreen(){
+    SignUpScreen(navController = rememberNavController())
+}
 

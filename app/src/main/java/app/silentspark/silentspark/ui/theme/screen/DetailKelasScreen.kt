@@ -29,6 +29,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import app.silentspark.silentspark.R
 import app.silentspark.silentspark.dummy.DataKelas
 import app.silentspark.silentspark.ui.theme.components.detailkelas.AksesKelas
@@ -155,10 +159,14 @@ fun DetailKelasScreen(
                                 .fillMaxWidth(),
                             contentAlignment = Alignment.Center
                         ) {
-                            Hubungi(
+                            Hubungi(navController = rememberNavController(),
                                 email = "biancasavador@gmail.com",
                                 modifier = modifier
                                     .padding(8.dp)
+                                    .clickable {
+                                        navController.navigate("rating")
+                                    }
+
                             )
 
                         }
@@ -167,6 +175,12 @@ fun DetailKelasScreen(
             }
         }
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewDetailKelasScreen(){
+    DetailKelasScreen(kelasId = 1, navController = rememberNavController())
 }
 
 

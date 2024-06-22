@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import app.silentspark.silentspark.R
 import app.silentspark.silentspark.dummy.DataDummy
 import app.silentspark.silentspark.model.KeteranganPesanan
@@ -99,3 +100,15 @@ fun TandaTerimaScreen(
     )
 }
 
+@Preview(showBackground = true)
+@Composable
+fun PreviewTandaTerimaScreen() {
+    val navController = rememberNavController()
+    SilentSparkTheme {
+        TandaTerimaScreen(
+            navController = navController,
+            tandaterima = DataDummy.listKeteranganPesanan,
+            onBackClick = {}
+        )
+    }
+}

@@ -32,6 +32,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import app.silentspark.silentspark.dummy.DataDummy
 import app.silentspark.silentspark.model.Course
+import app.silentspark.silentspark.navigation.Screen
 import app.silentspark.silentspark.state.UiState
 import app.silentspark.silentspark.ui.theme.components.BannerMain
 import app.silentspark.silentspark.ui.theme.components.ItemBeranda
@@ -107,7 +108,13 @@ fun BerandaSiswaContent(
 
             Image(
                 painter = painterResource(id = R.drawable.ic_notif),
-                contentDescription = "notification")
+                contentDescription = "notification",
+                modifier = Modifier
+                    .size(30.dp)
+                    .clickable {
+                        navController.navigate("notification")
+                    }
+            )
         }
 
         Row(modifier = Modifier.padding(top = 16.dp)) {
@@ -141,7 +148,7 @@ fun BerandaSiswaContent(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(8.dp)
-                        .clickable { })
+                        .clickable { navController.navigate(Screen.ProfileGuru.route)})
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
